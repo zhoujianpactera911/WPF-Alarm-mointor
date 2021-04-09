@@ -1,0 +1,583 @@
+﻿<UserControl x:Class="Zhaoxi.Industrial.View.SystemMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Zhaoxi.Industrial.View"
+             xmlns:component="clr-namespace:Zhaoxi.Controls.Components;assembly=Zhaoxi.Controls"
+             xmlns:control="clr-namespace:Zhaoxi.Controls;assembly=Zhaoxi.Controls"
+             xmlns:model="clr-namespace:Zhaoxi.Industrial.Model"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:converter="clr-namespace:Zhaoxi.Industrial.Base.Converter"
+             xmlns:base="clr-namespace:Zhaoxi.Industrial.Base"
+             mc:Ignorable="d" FontFamily="Microsoft YaHei" FontWeight="ExtraLight"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converter:Bool2VisibilityConverter x:Key="Bool2VisibilityConverter"/>
+
+        <ControlTemplate TargetType="ToggleButton" x:Key="StateButtonTemplate">
+            <Border BorderBrush="#99EEEEEE" BorderThickness="0" CornerRadius="3" 
+                    Background="#EEE" Height="20" Width="50" Name="back">
+                <Grid>
+                    <TextBlock Text="停机" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,0" FontSize="9" Foreground="#888"/>
+                    <TextBlock Text="运行" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="4,0" FontSize="9" Foreground="White"/>
+                    <Border Margin="2,2" HorizontalAlignment="Left" Width="23" Background="#DDD" CornerRadius="2">
+                        <TextBlock Text="||" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8"/>
+                        <Border.RenderTransform>
+                            <TranslateTransform X="22" x:Name="tt"/>
+                        </Border.RenderTransform>
+                    </Border>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetName="tt" Storyboard.TargetProperty="X"/>
+                                <ColorAnimation Duration="0:0:0.2" To="#38baec" Storyboard.TargetName="back" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetName="tt" Storyboard.TargetProperty="X"/>
+                                <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="back" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="ToggleButton" x:Key="WarningButtonTemplate">
+            <Grid>
+                <TextBlock Text="&#xe62e;" FontFamily="pack://application:,,,/Zhaoxi.Industrial;component/Assets/Fonts/#iconfont"
+                           Foreground="#FFFF3300" FontSize="18" VerticalAlignment="Center" Margin="0,0,0,5" 
+                           Name="txt" Opacity="0"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Opacity" Value="1" TargetName="txt"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Canvas Background="Transparent"
+                MouseWheel="Canvas_MouseWheel"
+                MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+                MouseLeftButtonUp="Canvas_MouseLeftButtonUp"
+                MouseMove="Canvas_MouseMove">
+            <Viewbox Canvas.Left="0" Canvas.Top="340" Name="mainView">
+                <Grid Name="grid">
+                    <Polygon VerticalAlignment="Bottom" Fill="#AAF7F9FA" Points="0,200 150,0 1000,0 1200 200 0,200" Stroke="#DDDFFDFF" StrokeThickness="2"/>
+
+                    <!--冷却塔-->
+                    <component:CoolingTower Width="90" Height="110"
+                                            Command="{Binding ComponentCommand}"
+                                            CommandParameter="{Binding Path=(base:GlobalMonitor.DeviceList)[2]}"
+                                            IsRunning="{Binding Path=(base:GlobalMonitor.DeviceList)[2].IsRunning}" 
+                                            IsFaultState="{Binding Path=(base:GlobalMonitor.DeviceList)[2].IsWarning}"
+                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="125,0,0,95"/>
+                    <component:CoolingTower Width="95" Height="115" 
+                                            Command="{Binding ComponentCommand}"
+                                            CommandParameter="{Binding Path=(base:GlobalMonitor.DeviceList)[1]}"
+                                            IsRunning="{Binding Path=(base:GlobalMonitor.DeviceList)[1].IsRunning}" 
+                                            IsFaultState="{Binding Path=(base:GlobalMonitor.DeviceList)[1].IsWarning}"
+                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="98,0,0,52"/>
+                    <component:CoolingTower Width="100" Height="120" 
+                                            Command="{Binding ComponentCommand}"
+                                            CommandParameter="{Binding Path=(base:GlobalMonitor.DeviceList)[0]}"
+                                            IsRunning="{Binding Path=(base:GlobalMonitor.DeviceList)[0].IsRunning}" 
+                                            IsFaultState="{Binding Path=(base:GlobalMonitor.DeviceList)[0].IsWarning}"
+                                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="70,0,0,10"/>
+
+
+                    <component:Pipeline Height="5" Width="35" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="160.968,159.666,0,0" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <component:Pipeline Panel.ZIndex="1" Height="5" Width="26" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="207.593,81.416,0,0" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <component:Pipeline Panel.ZIndex="1" Height="5" Width="28" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="184.655,120.916,0,0"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <component:Pipeline Height="5" Width="70" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="193.231,163.549,0,0"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-66"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="25" Direction="2" CapRadius="2" LiquidColor="Orange" Margin="219.833,103.651,0,0"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-66"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="405" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="221.134,100.999,0,0"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="6"/>
+                    <component:Pipeline Height="5" Width="20" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="480,104.17,0,0"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="90"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+
+                    <component:Pipeline Height="5" Width="20" Direction="1" CapRadius="2" LiquidColor="Orange" Margin="626.248,103.922,0,0"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="90"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+
+
+                    <!--冷却泵-->
+                    <component:CoolingPump Panel.ZIndex="2" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="280,0,0,29.999" IsFaultState="True"/>
+                    <component:CoolingPump Panel.ZIndex="2" Width="57" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="288.458,0,0,61"/>
+                    <component:CoolingPump Panel.ZIndex="2" Width="55" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="295.5,0,0,91"/>
+
+                    <!--制冷机-->
+                    <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Left" Points="15,0 65,0 60,85 0,85" Fill="#443FADFF" Margin="450,0,0,70" Panel.ZIndex="5"/>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="5" Height="55" Fill="#663FADFF" Margin="510,0,0,15">
+                        <Rectangle.RenderTransform>
+                            <SkewTransform AngleY="-86.65"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60" Height="55" Fill="#223FADFF" Margin="450,0,0,15"/>
+
+                    <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Left" Points="0,0 50,0 65,85 5,85" Fill="#443FADFF" Margin="610,0,0,70" Panel.ZIndex="7"/>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                               Width="5" Height="55" Fill="#663FADFF" Margin="610,0,0,15" RenderTransformOrigin="1,1">
+                        <Rectangle.RenderTransform>
+                            <SkewTransform AngleY="86.65"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60" Height="55" Fill="#223FADFF" Margin="615,0,0,15"/>
+
+                    <!--水箱-->
+                    <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Left" Points="0,0 86,0 125,30 40,30" Fill="#443FADFF" Margin="925.408,0,0,238"/>
+                    <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                             Points="0 0 40 30 40 120 0 65" Fill="#663FADFF" Margin="925.498,0,0,147.875" RenderTransformOrigin="1,1">
+                    </Polygon>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="85" Height="89.812" Fill="#223FADFF" Margin="965.413,0,0,148.188"/>
+
+
+                    <!--锅炉-->
+                    <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Left" Points="0,0 50,0 85,85 25,85" Fill="#443FADFF" Margin="770,0,0,70"/>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                               Width="25" Height="55" Fill="#663FADFF" Margin="770,0,0,15" RenderTransformOrigin="1,1">
+                        <Rectangle.RenderTransform>
+                            <SkewTransform AngleY="73.65"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60" Height="55" Fill="#223FADFF" Margin="795,0,0,15"/>
+
+                    <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Left" Points="0,0 50,0 100,85 40,85" Fill="#443FADFF" Margin="915,0,0,70"/>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                               Width="40" Height="55" Fill="#663FADFF" Margin="915,0,0,15" RenderTransformOrigin="1,1">
+                        <Rectangle.RenderTransform>
+                            <SkewTransform AngleY="65"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="60" Height="55" Fill="#223FADFF" Margin="955,0,0,15"/>
+
+
+                    <component:Pipeline Height="5" Width="38" Direction="2" CapRadius="2" LiquidColor="Green" Margin="161.343,229.666,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <component:Pipeline Panel.ZIndex="1" Height="5" Width="30" Direction="2" CapRadius="2" LiquidColor="Green" Margin="184.718,188.416,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <component:Pipeline Height="5" Width="30" Direction="2" CapRadius="2" LiquidColor="Green" Margin="206.97,145.916,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <component:Pipeline Height="5" Width="70" Direction="2" CapRadius="2" LiquidColor="Green" Margin="193.731,233.549,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-66"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="28" Direction="1" CapRadius="2" LiquidColor="Green" Margin="220.92,172.465,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-66"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="56.708" Direction="2" CapRadius="2" LiquidColor="Green" Margin="222.929,169.082,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="3"/>
+                    <component:Pipeline Height="5" Width="30" Direction="2" CapRadius="2" LiquidColor="Green" Margin="282.845,153.584,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
+                    <component:Pipeline Height="5" Width="25.5" Direction="2" CapRadius="2" LiquidColor="Green" Margin="275.184,183.75,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
+                    <component:Pipeline Height="5" Width="23.333" Direction="2" CapRadius="2" LiquidColor="Green" Margin="266.456,212.287,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
+                    <component:Pipeline Height="5" Width="50.404" Direction="1" CapRadius="2" LiquidColor="Green" Margin="263.981,216.049,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-73"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="20.883" Direction="2" CapRadius="2" LiquidColor="Green" Margin="276.94,173.296,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-73"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="108.933" Direction="2" CapRadius="2" LiquidColor="Green" Margin="308.942,197.561,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="4">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="-76"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="301.334" Direction="2" CapRadius="2" LiquidColor="Green" Margin="335.006,91.962,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1"/>
+                    <component:Pipeline Height="5" Width="9.917" Direction="1" CapRadius="1" LiquidColor="Green" Margin="296.5,195.876,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="5">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="90"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="21.375" Direction="2" CapRadius="2" LiquidColor="Green" Margin="291.559,193.375,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="4"/>
+                    <component:Pipeline Height="5" Width="10.073" Direction="1" CapRadius="1" LiquidColor="Green" Margin="304.535,166.377,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="5">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="90"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="19.562" Direction="2" CapRadius="2" LiquidColor="Green" Margin="299.594,164.032,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="4"/>
+                    <component:Pipeline Height="5" Width="10.073" Direction="1" CapRadius="1" LiquidColor="Green" Margin="311.284,137.461,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="5">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="90"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="19.562" Direction="2" CapRadius="2" LiquidColor="Green" Margin="306.343,135.116,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="4"/>
+                    <component:Pipeline Height="5" Width="30.23" Direction="2" CapRadius="2" LiquidColor="Green" Margin="491.284,94.795,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="95"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+                    <component:Pipeline Height="5" Width="30.23" Direction="2" CapRadius="2" LiquidColor="Green" Margin="636.606,93.298,0,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1">
+                        <component:Pipeline.RenderTransform>
+                            <RotateTransform Angle="88"/>
+                        </component:Pipeline.RenderTransform>
+                    </component:Pipeline>
+
+
+
+                </Grid>
+            </Viewbox>
+        </Canvas>
+        <Grid Height="auto" VerticalAlignment="Top" Margin="20,10" Background="{x:Null}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="#66DFFDFF" BorderThickness="1" CornerRadius="5" Background="#22000000" Visibility="Collapsed">
+                <Border.Effect>
+                    <DropShadowEffect Color="#FFDFFDFF" ShadowDepth="0" Direction="0" BlurRadius="5"/>
+                </Border.Effect>
+            </Border>
+            <Grid VerticalAlignment="Top" Margin="15,0" 
+                  Visibility="{Binding PageModel.IsShowDetail, Converter={StaticResource Bool2VisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding PageModel.DeviceModel.DeviceName}" Margin="0,15" Foreground="White" VerticalAlignment="Center" FontSize="14"/>
+                <Grid Grid.Row="1" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="液位：" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="入口压力：" Grid.Row="1" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="入口温度：" Grid.Row="2" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="出口压力：" Grid.Row="3" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="出口温度：" Grid.Row="4" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="补水压力：" Grid.Row="5" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+
+                    <lvc:CartesianChart Grid.Column="1" MinHeight="30" DataTooltip="{x:Null}">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Margin="0"
+                                            Values="1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Grid.Column="1" Grid.Row="1" MinHeight="30" DataTooltip="{x:Null}">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Margin="0"
+                                            Values="1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Grid.Column="1" Grid.Row="2" MinHeight="30" DataTooltip="{x:Null}">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Margin="0"
+                                            Values="1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Grid.Column="1" Grid.Row="3" MinHeight="30" DataTooltip="{x:Null}">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Margin="0"
+                                            Values="1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Grid.Column="1" Grid.Row="4" MinHeight="30" DataTooltip="{x:Null}">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Margin="0"
+                                            Values="1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Grid.Column="1" Grid.Row="5" MinHeight="30" DataTooltip="{x:Null}">
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Margin="0"
+                                            Values="1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4,1,4,3,2,4,5,7,8,5,4,3,2,4,6,7,8,9,6,5,4">
+                                <lvc:LineSeries.Stroke>
+                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                    </LinearGradientBrush>
+                                </lvc:LineSeries.Stroke>
+                            </lvc:LineSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis ShowLabels="False"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <TextBlock Text="5 " Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="m" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="50 " Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="Mpa" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="50 " Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="℃" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="50 " Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="Mpa" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="50 " Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="℃" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="50 " Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                    <TextBlock Text="Mpa" Grid.Column="3" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"/>
+                </Grid>
+                
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding PageModel.DeviceModel.MonitorValueList}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding ValueName,StringFormat=\{0\}：}" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+
+                                <lvc:CartesianChart Grid.Column="1" MinHeight="30" DataTooltip="{x:Null}">
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries Fill="Transparent" PointGeometrySize="0" StrokeThickness="0.5" Values="{Binding Values}">
+                                            <lvc:LineSeries.Stroke>
+                                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                                    <GradientStop Color="Orange" Offset="0.5"/>
+                                                    <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                                    <GradientStop Color="#FFFFE2AE" Offset="0.1"/>
+                                                </LinearGradientBrush>
+                                            </lvc:LineSeries.Stroke>
+                                        </lvc:LineSeries>
+                                    </lvc:CartesianChart.Series>
+                                    <lvc:CartesianChart.AxisX>
+                                        <lvc:Axis ShowLabels="False"/>
+                                    </lvc:CartesianChart.AxisX>
+                                    <lvc:CartesianChart.AxisY>
+                                        <lvc:Axis ShowLabels="False"/>
+                                    </lvc:CartesianChart.AxisY>
+                                </lvc:CartesianChart>
+
+                                <TextBlock Text="{Binding CurrentValue}" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#99FFFFFF"/>
+                                <TextBlock Text="{Binding Unit}" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF" Margin="3,0,0,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Border BorderBrush="#33FFFFFF" BorderThickness="0,0.5,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                <Grid Grid.Row="2" Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="实时状态:" VerticalAlignment="Center" Foreground="#99FFFFFF"/>
+                    <ToggleButton Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                  IsChecked="{Binding PageModel.DeviceModel.IsRunning}"
+                                  Template="{StaticResource StateButtonTemplate}" Margin="15,0,0,0"/>
+                    <ToggleButton Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                  IsChecked="{Binding PageModel.DeviceModel.IsWarning}" IsEnabled="False"
+                                  Template="{StaticResource WarningButtonTemplate}"/>
+                </Grid>
+                <ItemsControl ItemsSource="{Binding PageModel.DeviceModel.WarningMessage}" Grid.Row="3">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Message}" Foreground="#CCFF4400" TextWrapping="Wrap" LineHeight="22">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect Color="White" ShadowDepth="0" Direction="0" Opacity="0.7" BlurRadius="1"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="系统总览" Foreground="White" FontSize="16" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+                <UniformGrid Columns="3" Margin="0,40,0,0">
+                    <StackPanel>
+                        <TextBlock Text="监控值" HorizontalAlignment="Center" Foreground="#99FFFFFF"/>
+                        <control:CircularProgressBar Value="{Binding PageModel.GlobalMonitorValue1}" Width="60" Height="90" BackColor="#EEE" ForeColor="#20c9b4"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="监控值" HorizontalAlignment="Center" Foreground="#99FFFFFF"/>
+                        <control:CircularProgressBar Value="{Binding PageModel.GlobalMonitorValue2}" Width="60" Height="90" BackColor="#EEE" ForeColor="Orange"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="监控值" HorizontalAlignment="Center"  Foreground="#99FFFFFF"/>
+                        <control:CircularProgressBar Value="{Binding PageModel.GlobalMonitorValue3}" Width="60" Height="90" BackColor="#EEE" ForeColor="#38baec"/>
+                    </StackPanel>
+                </UniformGrid>
+
+                <TextBlock Text="实时日志" Foreground="#44FFFFFF" Grid.Row="2" Margin="5,10"/>
+                <TextBlock Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="11">
+                    <Hyperlink Foreground="#66DFFDFF">详情</Hyperlink>
+                </TextBlock>
+                <ItemsControl Grid.Row="3" ItemsSource="{Binding PageModel.Logs}" AlternationCount="2">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="28">
+                                <Border CornerRadius="14" Background="#11FFFFFF" Name="back" Visibility="Collapsed"/>
+                                <Grid TextBlock.FontSize="10" TextBlock.Foreground="White" Name="content">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Num,StringFormat=\{0:00\}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding DeviceName}" VerticalAlignment="Center" Grid.Column="1"/>
+                                    <TextBlock Text="{Binding LogInfo}" VerticalAlignment="Center" Grid.Column="2"/>
+                                    <Border Grid.Column="3" Height="26"
+                                            CornerRadius="0,13,13,0" Name="typeBack" Margin="0,1,2,1">
+                                        <TextBlock Text="{Binding LogType}" Margin="8,0" VerticalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="back"/>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding LogType}" Value="Warn">
+                                    <Setter Property="Background" Value="#66FF0000" TargetName="typeBack"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

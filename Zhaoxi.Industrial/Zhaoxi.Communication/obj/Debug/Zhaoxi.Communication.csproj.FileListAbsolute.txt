@@ -1,0 +1,12 @@
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Communication\bin\Debug\Zhaoxi.Communication.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Communication\bin\Debug\Zhaoxi.Communication.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.csprojAssemblyReference.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.csproj.CoreCompileInputs.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Communication\bin\Debug\Zhaoxi.Communication.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Communication\bin\Debug\Zhaoxi.Communication.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.csprojAssemblyReference.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.csproj.CoreCompileInputs.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Communication\obj\Debug\Zhaoxi.Communication.pdb

@@ -1,0 +1,39 @@
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\bin\Debug\Zhaoxi.Controls.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\bin\Debug\Zhaoxi.Controls.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.csprojAssemblyReference.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls_MarkupCompile.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls_MarkupCompile.lref
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.g.resources
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.Properties.Resources.resources
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.csproj.GenerateResource.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.csproj.CoreCompileInputs.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\CircularProgressBar.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\CircularProgressBar.baml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingPump.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingTower.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\Pipeline.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingPump.baml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingTower.baml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\Pipeline.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\bin\Debug\Zhaoxi.Controls.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\bin\Debug\Zhaoxi.Controls.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\CircularProgressBar.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingPump.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingTower.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\Pipeline.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls_MarkupCompile.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls_MarkupCompile.lref
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\CircularProgressBar.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingPump.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\CoolingTower.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Components\Pipeline.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.g.resources
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.Properties.Resources.resources
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.csproj.GenerateResource.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.csproj.CoreCompileInputs.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Controls\obj\Debug\Zhaoxi.Controls.pdb

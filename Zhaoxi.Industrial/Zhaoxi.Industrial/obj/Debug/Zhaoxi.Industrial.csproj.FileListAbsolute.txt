@@ -1,0 +1,60 @@
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Industrial.exe.config
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Industrial.exe
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Industrial.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\MainWindow.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\App.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial_MarkupCompile.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial_MarkupCompile.lref
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\MainWindow.baml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.g.resources
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.Properties.Resources.resources
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csproj.GenerateResource.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csproj.CoreCompileInputs.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.exe
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Assets\Styles\DefaultStyles.baml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csprojAssemblyReference.cache
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\View\SystemMonitor.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\View\SystemMonitor.baml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Communication.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Controls.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Communication.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Controls.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csproj.CopyComplete
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.Wpf.dll
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.xml
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.Wpf.pdb
+D:\Zhaoxi.EDU\Jovan-Lesson\2020 WPF进阶+上位机实战\录播视频\2-\src\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.Wpf.xml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Industrial.exe.config
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Industrial.exe
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Industrial.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.Wpf.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Communication.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Controls.dll
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Communication.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\Zhaoxi.Controls.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.xml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.Wpf.pdb
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\bin\Debug\LiveCharts.Wpf.xml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csprojAssemblyReference.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Assets\Styles\DefaultStyles.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\MainWindow.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\View\SystemMonitor.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\App.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial_MarkupCompile.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial_MarkupCompile.lref
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\MainWindow.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\View\SystemMonitor.baml
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.g.resources
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.Properties.Resources.resources
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csproj.GenerateResource.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csproj.CoreCompileInputs.cache
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.csproj.CopyComplete
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.exe
+D:\BaiduNetdiskDownload\Demo源码\Zhaoxi.Industrial\Zhaoxi.Industrial\obj\Debug\Zhaoxi.Industrial.pdb
